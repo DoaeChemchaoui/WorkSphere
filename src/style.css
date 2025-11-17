@@ -84,3 +84,60 @@ body {
     font-size:14px;
     color:#666;
 }
+
+.plan {
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    grid-template-rows:repeat(3,1fr);
+    gap:3px;
+    border:6px solid #000;
+    height:100vh;
+    overflow:hidden;
+}
+.plan div {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    transition:all 0.3s ease;
+    color:#fff;
+    font-weight:bold;
+    text-align:center;
+    padding:5px;
+}
+
+.conf {
+    grid-column:1/2;
+    grid-row:1/2;
+    border:3px solid #000;
+    color: #000;
+}
+.recep {
+    grid-column:1/2;
+    grid-row:2/4;
+    border:3px solid #000;
+}
+.serveurs {
+    grid-column:3/4;
+    grid-row:1/2;
+    border:3px solid #000;
+}
+.secu {
+    grid-column:3/4;
+    grid-row:3/4;
+    border:3px solid #000;
+}
+.perso {
+    grid-column:4/5;
+    grid-row:1/2;
+    border:3px solid #000;
+}
+.archives {
+    grid-column:4/5;
+    grid-row:3/4;
+    border:3px solid #000;
+}
+.vide {
+    grid-column:2/3;
+    grid-row:1/4;
+}
