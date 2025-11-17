@@ -25,7 +25,29 @@
         <div class="archives"><h3 style="color: black;">Archives </h3><button class="btn-zone">+</button></div>
     </div>
 </div>
-
+<div class="modal" id="modalAdd">
+    <div class="modal-content">
+        <span class="close" id="btnCloseModal">x</span>
+        <h3>Ajouter un employé</h3>
+        <form id="formAdd">
+            <label>Nom</label><input type="text" id="nameStaff" required>
+            <label>Rôle</label>
+            <select id="roleStaff" required>
+                <option value="Receptionniste">Receptionniste</option>
+                <option value="Technicien">Technicien IT</option>
+                <option value="Sécurité">Agent de sécurité</option>
+                <option value="Manager">Manager</option>
+                <option value="Nettoyage">Nettoyage</option>
+                <option value="Autre">Autre</option>
+            </select>
+            <label>Photo URL</label><input type="text" id="photoStaff" placeholder="Ex: worker1.jpg">
+            <label>Email</label><input type="email" id="emailStaff">
+            <label>Téléphone</label><input type="tel" id="phoneStaff">
+            <label>Expérience</label><input type="text" id="expStaff">
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+</div>
 <script src="src/script.js"></script>
 </body>
 </html>
