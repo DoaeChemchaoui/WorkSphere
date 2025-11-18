@@ -158,3 +158,27 @@ body {
 .btn-zone:hover {
     background-color: #155023;
 }
+
+.modal-content {
+    background:#fefefe;
+    margin:50px auto;
+    padding:30px;
+    border:3px solid #000;
+    width:90%;
+    max-width:400px;
+    border-radius:10px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.close {
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:20px;
+    font-weight:bold;
+    color:#333;
+    cursor:pointer;
+}
+.close:hover { color:red; }
