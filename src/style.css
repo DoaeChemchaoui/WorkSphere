@@ -249,3 +249,7 @@ body {
     line-height:1;
 }
 .worker-in-zone:hover { transform:scale(1.05); }
+
+.empty-required {
+    background-color: rgba(255,100,100,0.3);
+}
