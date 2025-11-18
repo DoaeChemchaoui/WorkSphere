@@ -43,3 +43,21 @@ formAdd.onsubmit = function(e){
     modalAdd.style.display = 'none';
     checkZones();
 };
+
+function afficherListe(){
+    listeStaff.innerHTML = '';
+    for(let i=0; i<staffList.length; i++){
+        if(staffList[i].zone === 'non-assigné'){
+            let div = document.createElement('div');
+            div.className = 'worker-card';
+            div.innerHTML = '<img src="'+staffList[i].photo+'" class="worker-photo">'+
+                            '<div><div class="worker-nom">'+staffList[i].nom+'</div>'+
+                            '<div class="worker-role">'+staffList[i].role+'</div></div>';
+            (function(index){
+                div.onclick = function(){ afficherProfil(staffList[index]); }
+            })(i);
+
+            listeStaff.appendChild(div);
+        }
+    }
+}
