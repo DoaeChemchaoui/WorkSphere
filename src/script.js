@@ -61,3 +61,23 @@ function afficherListe(){
         }
     }
 }
+
+function checkZones(){
+    for(let i=0;i<zones.length;i++){
+        let z = zones[i];
+
+        if(z.classList.contains('conf')|| z.classList.contains('perso')|| z.classList.contains('vide')){
+            z.classList.remove('empty-required');
+            continue;
+        }
+
+        let hasWorker = false;
+        let children = z.getElementsByClassName('worker-in-zone');
+        for(let j=0;j<children.length;j++){ hasWorker = true; }
+
+        if(!hasWorker) z.classList.add('empty-required');
+        else z.classList.remove('empty-required');
+    }
+}
+checkZones();
+afficherListe();
