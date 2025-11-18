@@ -187,6 +187,39 @@ body {
 }
 
 
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background: #155023;
+}
+
+
+
 .worker-in-zone {
     position:absolute;
     bottom:35px;
