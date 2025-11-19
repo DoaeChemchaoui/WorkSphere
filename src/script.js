@@ -79,5 +79,16 @@ function checkZones(){
         else z.classList.remove('empty-required');
     }
 }
+let imgModal = document.getElementById('img-modal');
+let photoInput = document.getElementById('photoStaff');
+
+photoInput.addEventListener('input', function() {
+    if(photoInput.value.trim() !== '') {
+        imgModal.src = photoInput.value;
+    } else {
+        imgModal.src = '';
+    }
+});
+
 checkZones();
 afficherListe();
