@@ -8,14 +8,14 @@
 <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-
-<div class="container">
-    <div class="side">
+<main>
+<section class="container">
+    <section class="side">
         <h2>Unassigned Staff</h2>
         <button class="btn-add" id="btnOpenModal"><i class="fa-solid fa-circle-plus"></i> Add new worker</button>
         <div class="liste" id="listeStaff"></div>
-    </div>
-    <div class="plan">
+    </section>
+    <section class="plan">
         <div class="conf"><h3 style="color: black;">Conference</h3> <button class="btn-zone">+</button></div>
         <div class="recep"><h3 style="color: black;">Reception </h3><button class="btn-zone">+</button></div>
         <div class="vide"></div>
@@ -23,12 +23,13 @@
         <div class="secu"><h3 style="color: black;">Sécurité</h3> <button class="btn-zone">+</button></div>
         <div class="perso"><h3 style="color: black;">Personnel </h3><button class="btn-zone" >+</button></div>
         <div class="archives"><h3 style="color: black;">Archives </h3><button class="btn-zone">+</button></div>
-    </div>
-</div>
-<div class="modal" id="modalAdd">
+    </section>
+</section>
+<section class="modal" id="modalAdd">
     <div class="modal-content">
         <span class="close" id="btnCloseModal">x</span>
         <h3>Ajouter un employé</h3>
+        <img id="img-modal" class="image-modal" src="" alt="photoStaff">
         <form id="formAdd">
             <label>Nom</label><input type="text" id="nameStaff" required>
             <label>Rôle</label>
@@ -47,11 +48,11 @@
             <button type="submit">Ajouter</button>
         </form>
     </div>
-</div>
-<div class="modal" id="modalProfil">
+</section>
+<section class="modal" id="modalProfil">
     <div class="modal-content" id="profilContent"></div>
-</div>
-
+</section>
+</main>
 <script src="src/script.js"></script>
 </body>
 </html>
