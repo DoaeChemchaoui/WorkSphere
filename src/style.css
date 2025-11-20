@@ -121,3 +121,22 @@
     overflow-y: auto;
     flex: 1;
 }
+
+.btn-zone {
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    background-color:#db6b02;
+    border:none;
+    color:white;
+    font-size:18px;
+    border-radius:50%;
+    width:35px;
+    height:35px;
+    cursor:pointer;
+    transition: transform 0.3s;
+}
+.btn-zone:hover {
+    background-color: #783a00;
+    transform: scale(1.1);
+}
