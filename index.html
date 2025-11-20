@@ -4,25 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plan & Staff</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="src/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
 <main>
-<section class="container">
-    <section class="side">
-        <h2>Unassigned Staff</h2>
-        <button class="btn-add" id="btnOpenModal"><i class="fa-solid fa-circle-plus"></i> Add new worker</button>
-        <div class="liste" id="listeStaff"></div>
+<section class="grid grid-cols-[1fr_3fr] h-screen">
+    <section class="bg-gray-200/60 border-r-4 border-black overflow-y-auto flex flex-col h-screen">
+        <h2 class="text-center py-5 text-xl font-bold border-b-2 border-gray-300">WORKSPHERE</h2>
+        <button id="btnOpenModal" class="mx-5 my-5 py-2 px-4 bg-green-500 hover:bg-green-700 text-white text-lg font-semibold rounded-lg transition">
+            Ajouter un nouvel employé
+        </button>
+
+        <div id="listeStaff" class="flex flex-wrap p-5 gap-4 justify-center"></div>
     </section>
+
     <section class="plan">
-        <div class="conf"><h3 style="color: black;">Conference</h3> <button class="btn-zone">+</button></div>
-        <div class="recep"><h3 style="color: black;">Reception </h3><button class="btn-zone">+</button></div>
-        <div class="vide"></div>
-        <div class="serveurs"><h3 style="color: black;">Serveurs</h3> <button class="btn-zone">+</button></div>
-        <div class="secu"><h3 style="color: black;">Sécurité</h3> <button class="btn-zone">+</button></div>
-        <div class="perso"><h3 style="color: black;">Personnel </h3><button class="btn-zone" >+</button></div>
-        <div class="archives"><h3 style="color: black;">Archives </h3><button class="btn-zone">+</button></div>
+    <div class="conference">
+        <h3>Conference</h3>
+        <div class="workers-container"></div>
+        <button class="btn-zone">+</button>
+    </div>
+    <div class="reception">
+        <h3>Reception</h3>
+        <div class="workers-container"></div>
+        <button class="btn-zone">+</button>
+    </div>
+    <div class="vide"></div>
+    <div class="serveurs">
+        <h3>Serveurs</h3>
+        <div class="workers-container"></div>
+        <button class="btn-zone">+</button>
+    </div>
+    <div class="securité">
+        <h3>Sécurité</h3>
+        <div class="workers-container"></div>
+        <button class="btn-zone">+</button>
+    </div>
+    <div class="personel">
+        <h3>Personnel</h3>
+        <div class="workers-container"></div>
+        <button class="btn-zone">+</button>
+    </div>
+    <div class="archives">
+        <h3>Archives</h3>
+        <div class="workers-container"></div>
+        <button class="btn-zone">+</button>
+    </div>
     </section>
 </section>
 <section class="modal" id="modalAdd">
@@ -31,7 +59,7 @@
         <h3>Ajouter un employé</h3>
         <img id="img-modal" class="image-modal" src="" alt="photoStaff">
         <form id="formAdd">
-            <label>Nom</label><input type="text" id="nameStaff" required>
+            <label>Nom et Prénom</label><input type="text" id="nameStaff" placeholder="Nom Complet" required>
             <label>Rôle</label>
             <select id="roleStaff" required>
                 <option value="Receptionniste">Receptionniste</option>
@@ -41,10 +69,13 @@
                 <option value="Nettoyage">Nettoyage</option>
                 <option value="Autre">Autre</option>
             </select>
-            <label>Photo URL</label><input type="text" id="photoStaff" placeholder="Ex: worker1.jpg">
-            <label>Email</label><input type="email" id="emailStaff">
-            <label>Téléphone</label><input type="tel" id="phoneStaff">
-            <label>Expérience</label><input type="text" id="expStaff">
+            <label>Photo URL</label><input type="text" id="photoStaff" placeholder="Ex: worker1.jpg" required>
+            <label>Email</label><input type="email" id="emailStaff"placeholder="email@gmail.com" required>
+            <label>Téléphone</label><input type="tel" id="phoneStaff"placeholder="+1234567891" required>
+            <div id="experience-container">
+            <h4>Expériences professionnelles</h4>
+            </div>
+            <button type="button" id="addExperience">Ajouter une expérience</button>
             <button type="submit">Ajouter</button>
         </form>
     </div>
