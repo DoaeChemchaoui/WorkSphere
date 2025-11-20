@@ -218,3 +218,27 @@
 .modal-content button:hover {
     background: #155023;
 }
+
+#experience-container {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+.experience-entry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.experience-entry input {
+    margin: 0;
+}
+.experience-entry button.remove-exp {
+    background: #dc3545;
+    color: white;
+    font-weight: bold;
+}
+.experience-entry button.remove-exp:hover {
+    background: #a71d2a;
+}
