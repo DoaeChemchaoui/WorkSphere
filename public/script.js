@@ -82,7 +82,6 @@ formAdd.onsubmit = (e) => {
     formAdd.reset();
     experienceContainer.innerHTML = '<h4>Expériences professionnelles</h4>';
     modalAdd.style.display = 'none';
-
 };
 
 
@@ -127,9 +126,9 @@ function zoneAutorisee(staff, zone) {
 
 btnZones.forEach(function(btn) {
     btn.onclick = function() {
-        let zone = btn.closest('div');
+        let zone = btn.parentElement;
 
-         staffCards = Array.from(listeStaff.getElementsByClassName('worker-card'));
+        let staffCards = Array.from(listeStaff.getElementsByClassName('worker-card'));
         if (staffCards.length === 0) {
             alert("Aucun employé disponible !");
             return;
@@ -138,17 +137,19 @@ btnZones.forEach(function(btn) {
         let msg = "Choisir un employé en entrant le numéro :\n";
         for (let i = 0; i < staffCards.length; i++) {
             let nom = staffCards[i].querySelector('.worker-nom').innerText;
-            msg += (i + 1) + ": " + nom + "\n";
+            msg += (i) + ": " + nom + "\n";
         }
 
-        let choix = parseInt(prompt(msg), 10) - 1;
-        if (isNaN(choix) || choix < 0 || choix >= staffCards.length) {
+        let choix = prompt(msg);
+        let index = choix;
+
+        if (index < 0 || index >= staffCards.length) {
             alert("Choix invalide !");
             return;
         }
 
-        let staffName = staffCards[choix].querySelector('.worker-nom').innerText;
-        let staff = staffList.find(s => s.nom === staffName);
+        let staffName = staffCards[index].querySelector('.worker-nom').innerText;
+        let staff = staffList.find(s => s.nom === staffName); 
 
         if (!zoneAutorisee(staff, zone)) {
             alert(staff.role + " ne peut pas être affecté à cette zone !");
@@ -189,6 +190,7 @@ btnZones.forEach(function(btn) {
         checkZones();
     };
 });
+
 
 function afficherProfil(staff) {
     let expHTML = "";
