@@ -32,29 +32,35 @@ addExperienceBtn.onclick = () => {
     experienceContainer.appendChild(div);
 };
 
-formAdd.onsubmit = function(e){
+
+formAdd.onsubmit = function(e) {
     e.preventDefault();
     let nom = document.getElementById('nameStaff').value;
     let role = document.getElementById('roleStaff').value;
     let photo = document.getElementById('photoStaff').value;
     let email = document.getElementById('emailStaff').value;
     let phone = document.getElementById('phoneStaff').value;
-    let exp = document.getElementById('expStaff').value;
 
-    if(nom === '') { alert("Nom obligatoire"); return; }
+    const expEntries = document.querySelectorAll('.experience-entry');
+    let experiences = [];
 
-    let employe = {
-        nom: nom,
-        role: role,
-        photo: photo,
-        email: email,
-        phone: phone,
-        exp: exp,
-        zone: 'non-assigné'
-    };
+    for (let entry of expEntries) {
+        const company = entry.querySelector('.exp-company').value;
+        const start = entry.querySelector('.exp-start').value;
+        const end = entry.querySelector('.exp-end').value;
+
+        if (start && end && new Date(start) > new Date(end)) {
+            alert("La date de début doit être antérieure à la date de fin !");
+            return;
+        }
+        experiences.push({ company, start, end });
+    }
+
+    let employe = { nom, role, photo, email, phone, experiences, zone: 'non-assigné' };
     staffList.push(employe);
     afficherListe();
     formAdd.reset();
+    experienceContainer.innerHTML = '<h4>Expériences professionnelles</h4>';
     modalAdd.style.display = 'none';
     checkZones();
 };
