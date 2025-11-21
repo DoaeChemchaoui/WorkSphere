@@ -299,3 +299,117 @@
 .empty-required {
     background-color: rgba(255,100,100,0.3);
 }
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .plan {
+        grid-template-columns: 1.5fr 0.8fr 1fr 1fr;
+        height: 100vh;
+    }
+    
+    .conference {
+        width: 110%;
+        top: 0;
+    }
+    
+    .reception {
+        top: 0;
+        width: 110%;
+    }
+    
+    .serveurs {
+        position: relative;
+        width: 100%;
+        left: 5px;
+        height: 130px;
+    }
+    
+    .personel {
+        width: 100%;
+        height: auto;
+    }
+    .securité{
+        width: 100%;
+        height: 130px;
+        left: 6px;
+    }
+    
+    .plan > div h3 {
+        font-size: 14px;
+        margin-top: 8px;
+        margin-bottom: 5px;
+    }
+    
+    .plan > div {
+        padding: 8px;
+    }
+    
+    .worker-in-zone {
+        padding: 6px;
+        font-size: 11px;
+    }
+    
+    .worker-in-zone img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .btn-zone {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .conference .workers-container { max-height: 120px; }
+    .reception .workers-container { max-height: 200px; }
+    .serveurs .workers-container { max-height: 120px; }
+    .securité .workers-container { max-height: 140px; }
+    .personel .workers-container { max-height: 140px; }
+    .archives .workers-container { max-height: 140px; }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1279px){
+    .plan {
+        grid-template-columns: 1.8fr 0.9fr 1fr 1fr;
+    }
+    
+    .conference {
+        width: 101%;
+    }
+
+    .reception{
+    height: 101%;
+    width: 101%;
+    }
+    
+    .personel {
+        width: 100%;
+        height: auto;
+    }
+    .securité{
+        width: 108%;
+        height: auto;
+        right: 10px;
+    }
+    .archives{
+        width: 200px;
+    }
+    .serveurs{
+        /* top: 15px; */
+        width: 110%;
+        right:15px ;
+        height: 105%;
+    }
+    .personel{
+            height: 105%;
+
+    }
+
+    .plan > div h3 {
+        font-size: 16px;
+    }
+    
+    .worker-in-zone {
+        font-size: 11px;
+    }
+}
