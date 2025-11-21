@@ -159,6 +159,23 @@ btnZones.forEach(function(btn) {
     };
 });
 
+function afficherProfil(staff) {
+    let expHTML = staff.experiences.map(e => "<p>"+e.company+" ("+e.start+" → "+e.end+")</p>").join('');
+    profilContent.innerHTML = `
+        <span class="close" onclick="document.getElementById('modalProfil').style.display='none'">x</span>
+        <img src="${staff.photo}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 15px;">
+        <p><b>Nom:</b> ${staff.nom}</p>
+        <p><b>Rôle:</b> ${staff.role}</p>
+        <p><b>Email:</b> ${staff.email}</p>
+        <p><b>Téléphone:</b> ${staff.phone}</p>
+        <p><b>Expériences:</b></p>
+        ${expHTML}
+        <p><b>Localisation:</b> ${staff.zone}</p>
+    `;
+    modalProfil.style.display = 'block';
+}
+
+
 function checkZones(){
     for(let i=0;i<zones.length;i++){
         let z = zones[i];
