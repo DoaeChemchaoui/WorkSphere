@@ -94,6 +94,70 @@ function zoneAutorisee(staff, zone) {
     return true;
 }
 
+btnZones.forEach(function(btn) {
+    btn.onclick = function() {
+        let zone = btn.closest('div');
+
+         staffCards = Array.from(listeStaff.getElementsByClassName('worker-card'));
+        if (staffCards.length === 0) {
+            alert("Aucun employé disponible !");
+            return;
+        }
+
+        let msg = "Choisir un employé en entrant le numéro :\n";
+        for (let i = 0; i < staffCards.length; i++) {
+            let nom = staffCards[i].querySelector('.worker-nom').innerText;
+            msg += (i + 1) + ": " + nom + "\n";
+        }
+
+        let choix = parseInt(prompt(msg), 10) - 1;
+        if (isNaN(choix) || choix < 0 || choix >= staffCards.length) {
+            alert("Choix invalide !");
+            return;
+        }
+
+        let staffName = staffCards[choix].querySelector('.worker-nom').innerText;
+        let staff = staffList.find(s => s.nom === staffName);
+
+        if (!zoneAutorisee(staff, zone)) {
+            alert(staff.role + " ne peut pas être affecté à cette zone !");
+            return;
+        }
+
+        let nbWorkers = zone.getElementsByClassName('worker-in-zone').length;
+        if (nbWorkers >= 5) {
+            alert("Zone complète ! Maximum 5 employés.");
+            return;
+        }
+
+        let divWorker = document.createElement('div');
+        divWorker.className = 'worker-in-zone';
+        divWorker.innerHTML = `
+            <img src="${staff.photo}">
+            <p>${staff.nom}</p>
+            <p>${staff.role}</p>
+        `;
+        divWorker.onclick = function() { afficherProfil(staff); };
+
+        let btnRemove = document.createElement('button');
+        btnRemove.className = 'btn-remove';
+        btnRemove.innerText = 'x';
+        btnRemove.onclick = function(e) {
+            e.stopPropagation();
+            divWorker.remove();
+            staff.zone = 'non-assigné';
+            afficherListe();
+            checkZones();
+        };
+        divWorker.appendChild(btnRemove);
+
+        zone.querySelector('.workers-container').appendChild(divWorker);
+
+        staff.zone = zone.classList[0];
+        afficherListe();
+        checkZones();
+    };
+});
 
 function checkZones(){
     for(let i=0;i<zones.length;i++){
