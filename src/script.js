@@ -65,22 +65,22 @@ formAdd.onsubmit = function(e) {
     checkZones();
 };
 
-function afficherListe(){
+function afficherListe() {
     listeStaff.innerHTML = '';
-    for(let i=0; i<staffList.length; i++){
-        if(staffList[i].zone === 'non-assigné'){
+    staffList.forEach(staff => {
+        if(staff.zone === 'non-assigné') {
             let div = document.createElement('div');
             div.className = 'worker-card';
-            div.innerHTML = '<img src="'+staffList[i].photo+'" class="worker-photo">'+
-                            '<div><div class="worker-nom">'+staffList[i].nom+'</div>'+
-                            '<div class="worker-role">'+staffList[i].role+'</div></div>';
-            (function(index){
-                div.onclick = function(){ afficherProfil(staffList[index]); }
-            })(i);
-
+            div.innerHTML = `
+                <img src="${staff.photo}" class="worker-photo">
+                <div>
+                    <div class="worker-nom">${staff.nom}</div>
+                    <div class="worker-role">${staff.role}</div>
+                </div>`;
+            div.onclick = function() { afficherProfil(staff); };
             listeStaff.appendChild(div);
         }
-    }
+    });
 }
 
 function checkZones(){
