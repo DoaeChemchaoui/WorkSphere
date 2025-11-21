@@ -83,6 +83,18 @@ function afficherListe() {
     });
 }
 
+function zoneAutorisee(staff, zone) {
+    const role = staff.role;
+    if(zone.classList.contains('reception') && !['Receptionniste','Manager','Nettoyage'].includes(role)) return false;
+    if(zone.classList.contains('serveurs') && !['Technicien','Manager','Nettoyage'].includes(role)) return false;
+    if(zone.classList.contains('securité') && !['Sécurité','Manager','Nettoyage'].includes(role)) return false;
+    if(role === 'Manager') return true;
+    if(role === 'Nettoyage' && zone.classList.contains('archives')) return false;
+    if(role === 'Autre' && ['reception','serveurs','securité'].some(c => zone.classList.contains(c))) return false;
+    return true;
+}
+
+
 function checkZones(){
     for(let i=0;i<zones.length;i++){
         let z = zones[i];
