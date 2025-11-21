@@ -39,7 +39,7 @@
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background-image: url("../images/image.png");
+    background-image: url("../src/images/image.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -241,4 +241,57 @@
 }
 .experience-entry button.remove-exp:hover {
     background: #a71d2a;
+}
+
+.worker-in-zone {
+    width: 90%;               
+    background: #fff;
+    border: 1.5px solid #000;
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.worker-in-zone:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.worker-in-zone img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border:2px solid #000;
+}
+
+.worker-in-zone p {
+    color: black;
+    margin: 0;
+    font-weight: 600;
+}
+
+.btn-remove {
+    background:red;
+    color:white;
+    font-weight:bold;
+    border:none;
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    margin-left: auto;
+}
+
+.btn-remove:hover {
+    transform: scale(1.1);
 }
