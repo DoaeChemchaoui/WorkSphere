@@ -1,3 +1,4 @@
+
 let listeStaff = document.getElementById('listeStaff');
 let btnOpenModal = document.getElementById('btnOpenModal');
 let btnCloseModal = document.getElementById('btnCloseModal');
@@ -5,7 +6,7 @@ let modalAdd = document.getElementById('modalAdd');
 let formAdd = document.getElementById('formAdd');
 let modalProfil = document.getElementById('modalProfil');
 let profilContent = document.getElementById('profilContent');
-let zones = document.querySelectorAll('.plan div');
+let zones = document.querySelectorAll('.plan > div');
 let btnZones = document.querySelectorAll('.btn-zone');
 let staffList = [];
 
@@ -160,39 +161,25 @@ btnZones.forEach(function(btn) {
 });
 
 function afficherProfil(staff) {
-    let expHTML = staff.experiences.map(e => "<p>"+e.company+" ("+e.start+" → "+e.end+")</p>").join('');
+    let expHTML = "";
+    for (let i = 0; i < staff.experiences.length; i++) {
+        let e = staff.experiences[i];
+        expHTML += "<p>" + e.company + " (" + e.start + " → " + e.end + ")</p>";
+    }
     profilContent.innerHTML = `
-        <span class="close" onclick="document.getElementById('modalProfil').style.display='none'">x</span>
-        <img src="${staff.photo}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 15px;">
-        <p><b>Nom:</b> ${staff.nom}</p>
-        <p><b>Rôle:</b> ${staff.role}</p>
-        <p><b>Email:</b> ${staff.email}</p>
-        <p><b>Téléphone:</b> ${staff.phone}</p>
-        <p><b>Expériences:</b></p>
-        ${expHTML}
-        <p><b>Localisation:</b> ${staff.zone}</p>
+    <span class="close" onclick="document.getElementById('modalProfil').style.display='none'">x</span>
+    <img src="${staff.photo}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 15px;">
+    <p><b>Nom:</b> ${staff.nom}</p>
+    <p><b>Rôle:</b> ${staff.role}</p>
+    <p><b>Email:</b> ${staff.email}</p>
+    <p><b>Téléphone:</b> ${staff.phone}</p>
+    <p><b>Expériences:</b></p>
+    ${expHTML}
+    <p><b>Localisation:</b> ${staff.zone}</p>
     `;
     modalProfil.style.display = 'block';
 }
 
-
-function checkZones(){
-    for(let i=0;i<zones.length;i++){
-        let z = zones[i];
-
-        if(z.classList.contains('conf')|| z.classList.contains('perso')|| z.classList.contains('vide')){
-            z.classList.remove('empty-required');
-            continue;
-        }
-
-        let hasWorker = false;
-        let children = z.getElementsByClassName('worker-in-zone');
-        for(let j=0;j<children.length;j++){ hasWorker = true; }
-
-        if(!hasWorker) z.classList.add('empty-required');
-        else z.classList.remove('empty-required');
-    }
-}
 let imgModal = document.getElementById('img-modal');
 let photoInput = document.getElementById('photoStaff');
 
