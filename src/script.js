@@ -190,6 +190,15 @@ photoInput.addEventListener('input', function() {
         imgModal.src = '';
     }
 });
-
+function checkZones() {
+    zones.forEach(z => {
+        let hasWorker = z.getElementsByClassName('worker-in-zone').length > 0;
+        if(!hasWorker && !z.classList.contains('conference') && !z.classList.contains('personel') && !z.classList.contains('vide')) {
+            z.classList.add('empty-required');
+        } else {
+            z.classList.remove('empty-required');
+        }
+    });
+}
 checkZones();
 afficherListe();
