@@ -9,12 +9,27 @@ let zones = document.querySelectorAll('.plan div');
 let btnZones = document.querySelectorAll('.btn-zone');
 let staffList = [];
 
-btnOpenModal.onclick = function() { modalAdd.style.display = 'block'; };
-btnCloseModal.onclick = function() { modalAdd.style.display = 'none'; };
+btnOpenModal.onclick = () => modalAdd.style.display = 'block';
+btnCloseModal.onclick = () => modalAdd.style.display = 'none';
+window.onclick = (e) => {
+    if(e.target === modalAdd) modalAdd.style.display = 'none';
+    if(e.target === modalProfil) modalProfil.style.display = 'none';
+};
 
-window.onclick = function(e) {
-    if(e.target == modalAdd) modalAdd.style.display = 'none';
-    if(e.target == modalProfil) modalProfil.style.display = 'none';
+const experienceContainer = document.getElementById('experience-container');
+const addExperienceBtn = document.getElementById('addExperience');
+
+addExperienceBtn.onclick = () => {
+    const div = document.createElement('div');
+    div.className = 'experience-entry';
+    div.innerHTML = `
+        <input type="text" placeholder="Entreprise" class="exp-company" required>
+        <input type="date" class="exp-start" required>
+        <input type="date" class="exp-end" required>
+        <button type="button" class="remove-exp">Supprimer</button>`;
+    
+    div.querySelector('.remove-exp').onclick = () => div.remove();
+    experienceContainer.appendChild(div);
 };
 
 formAdd.onsubmit = function(e){
