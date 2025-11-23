@@ -39,7 +39,7 @@
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background-image: url("../public/images/image.png");
+    background-image: url("images/image.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
