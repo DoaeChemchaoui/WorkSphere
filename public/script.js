@@ -9,13 +9,12 @@ let profilContent = document.getElementById('profilContent');
 let zones = document.querySelectorAll('.plan > div');
 let btnZones = document.querySelectorAll('.btn-zone');
 let staffList = [];
-
+afficherListe();
+ checkZones();
 btnOpenModal.onclick = () => modalAdd.style.display = 'block';
-btnCloseModal.onclick = () => modalAdd.style.display = 'none';
-window.onclick = (e) => {
-    if(e.target === modalAdd) modalAdd.style.display = 'none';
-    if(e.target === modalProfil) modalProfil.style.display = 'none';
-};
+    btnCloseModal.onclick = () =>{
+        modalAdd.style.display = 'none';
+    } 
 
 const experienceContainer = document.getElementById('experience-container');
 const addExperienceBtn = document.getElementById('addExperience');
@@ -33,38 +32,59 @@ addExperienceBtn.onclick = () => {
     experienceContainer.appendChild(div);
 };
 
-
-formAdd.onsubmit = function(e) {
+formAdd.onsubmit = (e) => {
     e.preventDefault();
-    let nom = document.getElementById('nameStaff').value;
-    let role = document.getElementById('roleStaff').value;
-    let photo = document.getElementById('photoStaff').value;
-    let email = document.getElementById('emailStaff').value;
-    let phone = document.getElementById('phoneStaff').value;
 
-    const expEntries = document.querySelectorAll('.experience-entry');
+    const nom   = nameStaff.value;
+    const role  = roleStaff.value;
+    const photo = photoStaff.value;
+    const email = emailStaff.value;
+    const phone = phoneStaff.value;
+
+    const nameRg  = /^[A-Za-z\s]+$/;
+    const emailRg = /.+@.+\..+/;
+    const phonerg = /^\d{10}$/;
+    if(!nameRg.test(nom)) {
+        alert("Nom invalide !");
+        return;
+    }
+    if(!emailRg.test(email)) {
+        alert("Email invalide !");
+        return;
+    }
+    if(!phonerg.test(phone)) {
+        alert("Téléphone invalide !");
+        return;
+    }
+
+    const companies = document.querySelectorAll('.exp-company');
+    const starts    = document.querySelectorAll('.exp-start');
+    const ends      = document.querySelectorAll('.exp-end');
+
     let experiences = [];
-
-    for (let entry of expEntries) {
-        const company = entry.querySelector('.exp-company').value;
-        const start = entry.querySelector('.exp-start').value;
-        const end = entry.querySelector('.exp-end').value;
-
+    for (let i = 0; i < companies.length; i++) {
+        const company = companies[i].value;
+        const start   = starts[i].value;
+        const end     = ends[i].value;
         if (start && end && new Date(start) > new Date(end)) {
             alert("La date de début doit être antérieure à la date de fin !");
             return;
         }
         experiences.push({ company, start, end });
     }
-
-    let employe = { nom, role, photo, email, phone, experiences, zone: 'non-assigné' };
-    staffList.push(employe);
+    staffList.push({
+        nom, role, photo, email, phone,
+        experiences,
+        zone: "non-assigné"
+    });
     afficherListe();
+    checkZones();
     formAdd.reset();
     experienceContainer.innerHTML = '<h4>Expériences professionnelles</h4>';
     modalAdd.style.display = 'none';
-    checkZones();
+
 };
+
 
 function afficherListe() {
     listeStaff.innerHTML = '';
@@ -86,12 +106,22 @@ function afficherListe() {
 
 function zoneAutorisee(staff, zone) {
     const role = staff.role;
-    if(zone.classList.contains('reception') && !['Receptionniste','Manager','Nettoyage'].includes(role)) return false;
-    if(zone.classList.contains('serveurs') && !['Technicien','Manager','Nettoyage'].includes(role)) return false;
-    if(zone.classList.contains('securité') && !['Sécurité','Manager','Nettoyage'].includes(role)) return false;
-    if(role === 'Manager') return true;
-    if(role === 'Nettoyage' && zone.classList.contains('archives')) return false;
-    if(role === 'Autre' && ['reception','serveurs','securité'].some(c => zone.classList.contains(c))) return false;
+    if (zone.classList.contains('reception')) {
+        if (role !== 'Receptionniste' && role !== 'Manager' && role !== 'Nettoyage') return false;
+    }
+    if (zone.classList.contains('serveurs')) {
+        if (role !== 'Technicien' && role !== 'Manager' && role !== 'Nettoyage') return false;
+    }
+    if (zone.classList.contains('securité')) {
+        if (role !== 'Sécurité' && role !== 'Manager' && role !== 'Nettoyage') return false;
+    }
+    if (role === 'Manager') return true;
+    if (role === 'Nettoyage' && zone.classList.contains('archives')) return false;
+    if (role === 'Autre') {
+        if (zone.classList.contains('reception')) return false;
+        if (zone.classList.contains('serveurs')) return false;
+        if (zone.classList.contains('securité')) return false;
+    }
     return true;
 }
 
