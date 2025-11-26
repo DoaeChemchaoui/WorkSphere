@@ -3,7 +3,6 @@
 **WorkSphere** est une plateforme web moderne et interactive permettant de gérer les employés d’une entreprise, de visualiser leurs zones d'affectation, de consulter leurs profils et de gérer leurs expériences professionnelles.  
 Le projet offre une expérience fluide, intuitive et centrée sur l'organisation interne.
 
----
 
 ## Contexte du projet
 
@@ -17,7 +16,6 @@ L’entreprise souhaite disposer d’un outil visuel pour :
 
 L’objectif est de créer une application dynamique, ergonomique, et totalement manipulable via JavaScript .
 
----
 
 ## User Stories
 
@@ -33,7 +31,6 @@ L’objectif est de créer une application dynamique, ergonomique, et totalement
 - S’assurer qu’une zone respecte le nombre maximum de personnes  
 - Interface totalement responsive (Desktop → Mobile)
 
----
 
 # Technologies utilisées
 
@@ -44,7 +41,6 @@ L’objectif est de créer une application dynamique, ergonomique, et totalement
 - **Git & GitHub** – versionning du code et hébergement  
 - **Vercel** – déploiement final du projet  
 
----
 
 ## Rôles & Missions
 
@@ -87,7 +83,6 @@ L’objectif est de créer une application dynamique, ergonomique, et totalement
 - Trello organiser les User Stories  
 - Préparation et démonstration du projet final  
 
----
 
 ## Pages et Sections du Projet
 
@@ -117,7 +112,7 @@ L’objectif est de créer une application dynamique, ergonomique, et totalement
 - Zone actuelle  
 - Design propre et lisible  
 
----
+
 
 ## Fonctionnalités principales développées
 
