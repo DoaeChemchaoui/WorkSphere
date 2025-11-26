@@ -9,6 +9,7 @@ let profilContent = document.getElementById('profilContent');
 let zones = document.querySelectorAll('.plan > div');
 let btnZones = document.querySelectorAll('.btn-zone');
 let staffList = [];
+staffList = [  { "nom": "Doae Chemchaoui", "role": "Manager", "photo": "https://intranet.youcode.ma/storage/users/profile/1704-1760996374.png", "email": "chemchaouidoae@gmail.com", "phone": "0652533797", "experiences": [ {"company":"Entreprise A","start":"2023-03-01","end":"2023-04-28"} ], "zone": "non-assigné" }, { "nom": "Sara", "role": "Sécurité", "photo": "https://intranet.youcode.ma/storage/users/profile/1704-1760996374.png", "email": "sara@example.com", "phone": "0623456789", "experiences": [ {"company":"Entreprise B","start":"2019-03-01","end":"2020-02-28"} ], "zone": "non-assigné" },{ "nom": "Aya", "role": "Receptionniste", "photo": "https://intranet.youcode.ma/storage/users/profile/1704-1760996374.png", "email": "aya@example.com", "phone": "0618725430", "experiences": [ {"company":"Entreprise C","start":"2025-03-01","end":"2025-07-28"} ], "zone": "non-assigné" }]
 afficherListe();
  checkZones();
 btnOpenModal.onclick = () => modalAdd.style.display = 'block';
